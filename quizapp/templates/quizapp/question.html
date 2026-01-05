@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<h1>{{ question.question }}</h1>
+<ul>
+    <li>{{question.choice1}}</li>
+    <li>{{question.choice2}}</li>
+    <li>{{question.choice3}}</li>
+    <li>{{question.choice4}}</li>
+</ul>
+<h2>Answer: {{question.answer}}</h2>
+
+
+{% endblock %}
