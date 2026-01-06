@@ -2,14 +2,13 @@
 
 {% block content %}
 {% load static %}
-<h1>{{ question.question }}</h1>
-<ul>
-    <li>{{question.choice1}}</li>
-    <li>{{question.choice2}}</li>
-    <li>{{question.choice3}}</li>
-    <li>{{question.choice4}}</li>
-</ul>
-<h2>Answer: {{question.answer}}</h2>
 
+<h1>{{ question_text }}</h1>
+<ul>
+    {% for choice_option, choice_text in choices.items %}
+    <li>{{choice_option}}: {{choice_text}}</li>
+    {% endfor %}
+</ul>
+<h2>Answer: {{answer}}</h2>
 
 {% endblock %}

@@ -11,10 +11,9 @@ class Quiz(models.Model):
 
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.SET_NULL, related_name="questions", null=True, blank=True)
-    question_text = models.TextField(max_length=60)
-    choice_1 = models.TextField(max_length=60)
-    choice_2 = models.TextField(max_length=60)
-    choice_3 = models.TextField(max_length=60)
-    choice_4 = models.TextField(max_length=60)
-    answer = models.TextField(max_length=60)
-    
+    question_text = models.CharField(max_length=60)
+    choices = models.JSONField()
+    answer = models.CharField(max_length=60)
+
+    def __str__(self):
+        return f"{self.question_text}"
