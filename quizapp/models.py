@@ -4,16 +4,16 @@ from django.db import models
 
 class Quiz(models.Model):
 
-    name = models.TextField(max_length=60)
+    name = models.CharField(max_length=60)
     def __str__(self):
         return f"{self.name}"
 
 
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.SET_NULL, related_name="questions", null=True, blank=True)
-    question_text = models.CharField(max_length=60)
+    question_text = models.CharField(max_length=100, default="Question text")
     choices = models.JSONField()
-    answer = models.CharField(max_length=60)
+    answer = models.CharField(max_length=1)
 
     def __str__(self):
         return f"{self.question_text}"
