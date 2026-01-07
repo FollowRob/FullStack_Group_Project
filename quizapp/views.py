@@ -1,24 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from quizapp.models import Quiz, Question
 # from django.http import HttpResponse
 
 
 # Create your views here.
 def view_question(request):
 
-    # Placeholder until model is completed
-    question = {
-        "question": "What is the capital of France?",
-        "choice1": "Berlin",
-        "choice2": "Madrid",
-        "choice3": "Paris",
-        "choice4": "Rome",
-        "answer": "Paris",
-    }
+    queryset = Question.objects.filter(pk=1)
+    question = get_object_or_404(queryset)
+
+    question_text = question.question_text
+    choices = question.choices
+    answer = question.answer
 
     return render(
         request,
         "quizapp/question.html",
         {
-            "question": question,
+            "question_text": question_text,
+            "choices": choices,
+            "answer": answer,
         },
     )
