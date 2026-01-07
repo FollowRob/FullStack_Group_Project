@@ -4,19 +4,22 @@
 {% load static %}
 
  <!-- Quiz preloaded with first question's data-->
-<section class="quiz-container container">
+<section class="quiz-container container px-3">
 
     {% with first_question=questions.0 %}
-
-    <h3 id="quetion-text">Q1 - {{ first_question.question_text }}</h3>
-
-    <ul id="question-choices">
+    <div class="row">
+        <h3 id="question-text">Q1 - {{ first_question.question_text }}</h3>
+    </div>
+    <div id="question-choices" class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
         {% for choice_key, choice_value in first_question.choices.items %}
-        <li>{{choice_value}}</li>
+        <div class="col">
+            <button class="btn btn-outline-secondary w-100" data-choice-key={{ choice_key }}>{{ choice_value }}</button>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 
-    <h3 id="question-answer">Answer: {{ first_question.answer}}
+    <h3 id="question-answer">Answer: {{ first_question.answer }}
+    </div>
     {% endwith %}
 
 </section>
