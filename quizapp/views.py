@@ -4,9 +4,9 @@ from quizapp.models import Quiz, Question
 
 
 # Create your views here.
-def view_question(request):
+def view_quiz(request):
 
-    queryset = Question.objects.filter(pk=1)
+    queryset = Question.objects.filter(pk=13)
     question = get_object_or_404(queryset)
 
     question_text = question.question_text
