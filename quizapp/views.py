@@ -6,19 +6,12 @@ from quizapp.models import Quiz, Question
 # Create your views here.
 def view_quiz(request):
 
-    queryset = Question.objects.filter(pk=13)
-    question = get_object_or_404(queryset)
-
-    question_text = question.question_text
-    choices = question.choices
-    answer = question.answer
+    questions = Question.objects.all()
 
     return render(
         request,
-        "quizapp/question.html",
+        "quizapp/quiz.html",
         {
-            "question_text": question_text,
-            "choices": choices,
-            "answer": answer,
+            "questions": questions,
         },
     )
