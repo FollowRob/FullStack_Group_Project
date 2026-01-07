@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+ <!-- Quiz preloaded with first question's data-->
+<section class="quiz-container container">
+
+    {% with first_question=questions.0 %}
+
+    <h3 id="quetion-text">Q1 - {{ first_question.question_text }}</h3>
+
+    <ul id="question-choices">
+        {% for choice_key, choice_value in first_question.choices.items %}
+        <li>{{choice_value}}</li>
+        {% endfor %}
+    </ul>
+
+    <h3 id="question-answer">Answer: {{ first_question.answer}}
+    {% endwith %}
+
+</section>
+{% endblock %}
