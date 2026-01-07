@@ -3,10 +3,9 @@
 {% block content %}
 {% load static %}
 
+ <!-- Quiz preloaded with first question's data-->
+<section class="quiz-container container">
 
-<section class="quiz-container">
-
-    <!-- Preloaded with first question's data-->
     {% with first_question=questions.0 %}
 
     <h3 id="quetion-text">Q1 - {{ first_question.question_text }}</h3>
