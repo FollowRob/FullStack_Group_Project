@@ -4,11 +4,11 @@
 {% load static %}
 
  <!-- Quiz preloaded with first question's data-->
-<section class="quiz-container container rounded px-3">
+<section class="quiz-container container rounded my-2 p-3">
 
     {% with first_question=questions.0 %}
     <div class="row">
-        <h3 id="question-text">Q1 - {{ first_question.question_text }}</h3>
+        <h2 id="question-text" class="text-center">{{ first_question.question_text }}</h2>
     </div>
     <div id="question-choices" class="row row-cols-1 row-cols-md-2 my-3">
         {% for choice_key, choice_value in first_question.choices.items %}
