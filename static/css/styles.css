@@ -8,19 +8,22 @@
     --pink-colour: #e06e76a2;
 }
 
-/** Global */
+/* Global */
 body {
     background-color: var(--light-green-colour);
     color: var(--green-colour);
 }
 
-/** Quiz container */
+
+/* Quiz container */
 .quiz-container {
     background-color: white;
     border: 2px solid var(--green-colour);
 }
 
-/** Button styling */
+
+/* Quiz button styling */
+/* Choice buttons */
 #question-choices button {
     background-color: white;
     border-color: var(--green-colour);
@@ -39,6 +42,7 @@ body {
     transition: all .2s ease-in-out;
 }
 
+/* Quiz controls */
 .quiz-controls {
     border: none;
     background-color: var(--pink-colour);
