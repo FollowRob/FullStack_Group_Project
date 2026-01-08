@@ -4,6 +4,20 @@
     --green-colour: #006666;
     --light-green-colour: #ddf0f0;
     --dark-green-colour: #004a4a;
+    --background-colour: #ffe0db;
+    --pink-colour: #e06e76a2;
+}
+
+/** Global */
+body {
+    background-color: var(--light-green-colour);
+    color: var(--green-colour);
+}
+
+/** Quiz container */
+.quiz-container {
+    background-color: white;
+    border: 2px solid var(--green-colour);
 }
 
 /** Button styling */
@@ -22,5 +36,20 @@
 #question-choices button:focus {
     background-color: var(--dark-green-colour);
     color:var(--light-green-colour);
+    transition: all .2s ease-in-out;
+}
+
+.quiz-controls {
+    border: none;
+    background-color: var(--pink-colour);
+    color: var(--green-colour)
+}
+
+.quiz-controls:hover,
+.quiz-controls:active,
+.quiz-controls:target {
+    border: none;
+    background-color: var(--pink-colour);
+    color: white;
     transition: all .2s ease-in-out;
 }
