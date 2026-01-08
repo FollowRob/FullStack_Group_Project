@@ -1,0 +1,26 @@
+
+/* CSS Variables */
+:root{
+    --green-colour: #006666;
+    --light-green-colour: #ddf0f0;
+    --dark-green-colour: #004a4a;
+}
+
+/** Button styling */
+#question-choices button {
+    background-color: white;
+    border-color: var(--green-colour);
+    color: var(--green-colour);
+}
+
+#question-choices button:hover {
+    background-color: var(--light-green-colour);
+    transition: all .2s ease-in-out;
+}
+
+#question-choices button:active,
+#question-choices button:focus {
+    background-color: var(--dark-green-colour);
+    color:var(--light-green-colour);
+    transition: all .2s ease-in-out;
+}
