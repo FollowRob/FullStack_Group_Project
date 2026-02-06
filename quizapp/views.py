@@ -6,12 +6,12 @@ from quizapp.models import Quiz, Question
 # Create your views here.
 def view_quiz(request):
 
-    questions = Question.objects.all()
+    questions_list = Question.objects.all()
 
     return render(
         request,
         "quizapp/quiz.html",
         {
-            "questions": questions,
+            "questions": questions_list,
         },
     )
