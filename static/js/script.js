@@ -27,3 +27,15 @@
 // // This creates a click listener on the button, which then calls the changeColor function.
 // coolButton.addEventListener("click", changeColor);
 
+// Find and select the buttons from the DOM
+let choiceButtons = document.querySelectorAll("#question-choices button");
+
+let selectedChoice
+
+// Function to retrieve specific choice of the selected button
+let selectChoice = (e) => {
+    selectedChoice = e.target.getAttribute("data-choice-key");
+    alert(selectedChoice);
+};
+
+choiceButtons.forEach(button => button.addEventListener("click", selectChoice));
