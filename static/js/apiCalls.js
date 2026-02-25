@@ -1,14 +1,15 @@
-async function fetchCorrectAnswer() {
+async function fetchQuestionData(path, id) {
     try {
-        let currentQuestionId = quizContainer.getAttribute("data-current-question")
-        let response = await fetch(`api/check-answer/${currentQuestionId}`);
-
-        if (!response.ok) throw new Error(`Failed to fetch answer. ${response.url}`);
-        
-        let correctAnswer = await response.json();
-        return correctAnswer
-    
+        let response = await fetch(`${path}/${id}`);
+        if (!response.ok) throw new Error(`Failed to fetch answer.`);
+        return await response.json();
     } catch (error) {
     console.error('Error fetching answer:', error);
     }
+}
+
+async function fetchCorrectAnswer() {
+    let currentQuestionId = quizContainer.getAttribute("data-current-question");
+    let correctAnswer = await fetchQuestionData('api/check-answer', currentQuestionId);
+    return correctAnswer;
 }
