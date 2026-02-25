@@ -11,16 +11,17 @@ let selectChoice = (e) => {
 };
 
 // Function to check selected choice against actual answer
-let checkAnswer = (e) => {
-    let answer = e.target.getAttribute("data-correct-answer");
-    
-    if (selectedChoice === "") {
-        alert("You didn't select a choice!");
-    } else if (selectedChoice === answer) {
-        alert("You got it right!");
-    } else {
-        alert(`Wrong! The correct answer was ${answer}`);
-    }
+let checkAnswer = async (e) => {
+    try {
+        const response = await fetch('api/check-answer');
+        if (!response.ok) throw new Error(`Failed to fetch answer. ${response.url}`);
+            const correct_answer = await response.json();
+            const answer_check_result = correct_answer===selectedChoice
+        
+        alert(`correct answer is ${correct_answer}. matched ${answer_check_result}`);
+  } catch (error) {
+    console.error('Error fetching answer:', error);
+  }
 };
 
 // Add event listeners
