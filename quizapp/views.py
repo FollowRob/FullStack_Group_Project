@@ -16,11 +16,10 @@ def view_quiz(request):
         },
     )
 
-def check_answer(request):
-    #question_id = request.question_id
-    #question = get_object_or_404(Question, pk=question_id)
+def check_answer(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
 
-    question_answer = "A" #question.answer
+    question_answer = question.answer
 
     return JsonResponse(question_answer, safe=False)
 

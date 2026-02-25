@@ -1,4 +1,5 @@
 // Find and select the buttons from the DOM
+let quizContainer = document.querySelector(".quiz-container")
 let choiceButtons = document.querySelectorAll("#question-choices button");
 let checkAnswerButton = document.getElementById("check-answer-button");
 
@@ -13,12 +14,13 @@ let selectChoice = (e) => {
 // Function to check selected choice against actual answer
 let checkAnswer = async (e) => {
     try {
-        const response = await fetch('api/check-answer');
+        let currentQuestionId = quizContainer.getAttribute("data-current-question")
+        let response = await fetch(`api/check-answer/${currentQuestionId}`);
         if (!response.ok) throw new Error(`Failed to fetch answer. ${response.url}`);
-            const correct_answer = await response.json();
-            const answer_check_result = correct_answer===selectedChoice
+            let correct_answer = await response.json();
+            let answer_check_result = correct_answer===selectedChoice
         
-        alert(`correct answer is ${correct_answer}. matched ${answer_check_result}`);
+        alert(`(Test) correct answer is ${correct_answer}. ${answer_check_result? "Correct":"Incorrect"}`);
   } catch (error) {
     console.error('Error fetching answer:', error);
   }
