@@ -1,4 +1,5 @@
 // Find and select the buttons from the DOM
+let quizContainer = document.querySelector(".quiz-container")
 let choiceButtons = document.querySelectorAll("#question-choices button");
 let checkAnswerButton = document.getElementById("check-answer-button");
 
@@ -7,20 +8,15 @@ let selectedChoice = "";
 // Function to retrieve specific choice of the selected button
 let selectChoice = (e) => {
     selectedChoice = e.target.getAttribute("data-choice-key");
-    alert(selectedChoice);
 };
 
 // Function to check selected choice against actual answer
-let checkAnswer = (e) => {
-    let answer = e.target.getAttribute("data-correct-answer");
-    
-    if (selectedChoice === "") {
-        alert("You didn't select a choice!");
-    } else if (selectedChoice === answer) {
-        alert("You got it right!");
-    } else {
-        alert(`Wrong! The correct answer was ${answer}`);
-    }
+async function checkAnswer() {
+    let correctAnswer = await fetchCorrectAnswer()
+    let result = selectedChoice === correctAnswer
+
+    alert(`${result ? "You got it correct!" : "You got it incorrect :("}
+        your answer: ${selectedChoice}, correct answer: ${correctAnswer}`);
 };
 
 // Add event listeners
