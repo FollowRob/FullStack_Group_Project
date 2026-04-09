@@ -1,6 +1,10 @@
 from django.shortcuts import get_object_or_404, render
 from quizapp.models import Quiz, Question
 from django.http import JsonResponse
+from quizapp.serializers import QuestionAnswerSerializer
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -16,10 +20,19 @@ def view_quiz(request):
         },
     )
 
+@api_view(['GET'])
 def check_answer(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
+    try:
+        question = Question.objects.get(pk=question_id)
+    except Question.DoesNotExist:
+        return Response({'error': 'Question not found'}, status=status.HTTP_404_NOT_FOUND)
 
-    question_answer = question.answer
+    if request.method == 'GET':
+        serializer = QuestionAnswerSerializer(question)
+        return Response(serializer.data)
+    # question = get_object_or_404(Question, pk=question_id)
 
-    return JsonResponse(question_answer, safe=False)
+    # question_answer = question.answer
+
+    # return JsonResponse(question_answer, safe=False)
 

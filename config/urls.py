@@ -21,4 +21,5 @@ from quizapp import urls as quizapp_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(quizapp_urls), name="quizapp_urls"),
+    path("api-auth/", include("rest_framework.urls")),
 ]
