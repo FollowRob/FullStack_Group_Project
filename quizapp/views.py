@@ -30,9 +30,3 @@ def check_answer(request, question_id):
     if request.method == 'GET':
         serializer = QuestionAnswerSerializer(question)
         return Response(serializer.data)
-    # question = get_object_or_404(Question, pk=question_id)
-
-    # question_answer = question.answer
-
-    # return JsonResponse(question_answer, safe=False)
-

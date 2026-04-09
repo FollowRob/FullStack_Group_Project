@@ -11,6 +11,6 @@ async function fetchQuestionData(path, id) {
 async function fetchCorrectAnswer() {
     let currentQuestionId = quizContainer.getAttribute("data-current-question");
     let correctAnswerObject = await fetchQuestionData('api/check-answer', currentQuestionId);
-    let correctAnswer = correctAnswerObject['answer']
+    let correctAnswer = correctAnswerObject.answer
     return correctAnswer;
 }
